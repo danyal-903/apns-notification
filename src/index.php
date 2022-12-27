@@ -18,7 +18,6 @@ try {
     }
 
     $device_token = $_POST["device_token"];
-    $apns_topic = $_POST["apns_topic"];
 
     if (empty($device_token) || empty($apns_topic)) {
         http_response_code(400);
@@ -33,7 +32,7 @@ try {
     $options = [
         'key_id' => '8R342T9J4R', // The Key ID obtained from Apple developer account
         'team_id' => 'RQCKA5ZH38', // The Team ID obtained from Apple developer account
-        'app_bundle_id' => $apns_topic, // The bundle ID for app obtained from Apple developer account
+        'app_bundle_id' => 'com.invo.voipDemo', // The bundle ID for app obtained from Apple developer account
         'private_key_path' => $p8file, // Path to private key
         'private_key_secret' => null // Private key secret
     ];
@@ -43,8 +42,8 @@ try {
     // Can be useful when trying to send pushes during long-running tasks
     $authProvider = Token::create($options);
 
-    $alert = Alert::create()->setTitle('Hello!');
-    $alert = $alert->setBody('First push notification');
+    $alert = Alert::create()->setTitle('Call Init VOIP!');
+    $alert = $alert->setBody('Call init notification');
 
     $payload = Payload::create()->setAlert($alert);
 
@@ -52,7 +51,7 @@ try {
     $payload->setSound('default');
 
     //add custom value to your notification, needs to be customized
-    $payload->setCustomValue('data', 'kuchbhi');
+    $payload->setCustomValue('data', 'start-call');
 
     $deviceTokens = [$device_token];
 
@@ -91,7 +90,7 @@ try {
 
     http_response_code($statuscode);
     header("Content-Type: application/json");
-    $response = ["deviceToken" => $deviceToken, "reason" => $reason, "error" => $error, "errorDescription" => $errorDescription, "timestamp" => $timestamp];
+    $response = ["deviceToken" => $deviceToken, "apnsId" => $apnsId, "reason" => $reason, "error" => $error, "errorDescription" => $errorDescription, "timestamp" => $timestamp];
     echo json_encode(["response" => $response]);
     die();
 } catch (Exception $e) {
