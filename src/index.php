@@ -31,8 +31,8 @@ try {
     $p8file = __DIR__ . "/AuthKey_8R342T9J4R.p8";
 
     $options = [
-        'key_id' => 'RQCKA5ZH38', // The Key ID obtained from Apple developer account
-        'team_id' => 'DDDDEEEEFF', // The Team ID obtained from Apple developer account
+        'key_id' => '8R342T9J4R', // The Key ID obtained from Apple developer account
+        'team_id' => 'RQCKA5ZH38', // The Team ID obtained from Apple developer account
         'app_bundle_id' => $apns_topic, // The bundle ID for app obtained from Apple developer account
         'private_key_path' => $p8file, // Path to private key
         'private_key_secret' => null // Private key secret
@@ -73,24 +73,25 @@ try {
 
     foreach ($responses as $response) {
         // The device token
-        $response->getDeviceToken();
+        $deviceToken = $response->getDeviceToken();
         // A canonical UUID that is the unique ID for the notification. E.g. 123e4567-e89b-12d3-a456-4266554400a0
-        $response->getApnsId();
+        $apnsId = $response->getApnsId();
 
         // Status code. E.g. 200 (Success), 410 (The device token is no longer active for the topic.)
-        $response->getStatusCode();
+        $statuscode = $response->getStatusCode();
         // E.g. The device token is no longer active for the topic.
-        $response->getReasonPhrase();
+        $reason = $response->getReasonPhrase();
         // E.g. Unregistered
-        $response->getErrorReason();
+        $error = $response->getErrorReason();
         // E.g. The device token is inactive for the specified topic.
-        $response->getErrorDescription();
-        $response->get410Timestamp();
+        $errorDescription = $response->getErrorDescription();
+        $timestamp = $response->get410Timestamp();
     }
 
 
-    http_response_code(200);
+    http_response_code($statuscode);
     header("Content-Type: application/json");
+    $response = ["deviceToken" => $deviceToken, "reason" => $reason, "error" => $error, "errorDescription" => $errorDescription, "timestamp" => $timestamp];
     echo json_encode(["response" => $response]);
     die();
 } catch (Exception $e) {
