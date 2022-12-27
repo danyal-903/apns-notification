@@ -18,11 +18,12 @@ try {
     }
 
     $device_token = $_POST["device_token"];
+    $bundle_id = $_POST["bundle_id"];
 
-    if (empty($device_token)) {
+    if (empty($device_token) || empty($bundle_id)) {
         http_response_code(400);
         header("Content-Type: application/json");
-        echo json_encode(["error" => "Bad request - device_token is required"]);
+        echo json_encode(["error" => "Bad request - device_token and bundle_id is required"]);
         exit();
     }
 
@@ -32,7 +33,7 @@ try {
     $options = [
         'key_id' => '8R342T9J4R', // The Key ID obtained from Apple developer account
         'team_id' => 'RQCKA5ZH38', // The Team ID obtained from Apple developer account
-        'app_bundle_id' => 'com.invo.voipDemo', // The bundle ID for app obtained from Apple developer account
+        'app_bundle_id' => $bundle_id, // The bundle ID for app obtained from Apple developer account
         'private_key_path' => $p8file, // Path to private key
         'private_key_secret' => null // Private key secret
     ];
