@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'danyalr8/apns',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'b0db35bb15f53274df329cd99fadf78e3cdc2421',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'danyalr8/apns' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'b0db35bb15f53274df329cd99fadf78e3cdc2421',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
