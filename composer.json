@@ -1,0 +1,23 @@
+{
+    "name": "danyalr8/apns",
+    "type": "project",
+    "description": "APNs notification server",
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "edamov/pushok": "^0.14.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Danyalr8\\Apns\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "danyal-903",
+            "email": "danyalr8@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
