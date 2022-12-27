@@ -63,7 +63,7 @@ try {
     // If you have issues with ssl-verification, you can temporarily disable it. Please see attached note.
     // Disable ssl verification
     // $client = new Client($authProvider, $production = false, [CURLOPT_SSL_VERIFYPEER=>false] );
-    $client = new Client($authProvider, $production = true);
+    $client = new Client($authProvider, $production = false);
     $client->addNotifications($notifications);
 
 
