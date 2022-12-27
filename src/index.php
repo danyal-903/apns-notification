@@ -22,7 +22,7 @@ try {
     if (empty($device_token)) {
         http_response_code(400);
         header("Content-Type: application/json");
-        echo json_encode(["error" => "Bad request"]);
+        echo json_encode(["error" => "Bad request - device_token is required"]);
         exit();
     }
 
