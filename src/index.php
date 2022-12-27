@@ -32,7 +32,7 @@ try {
     $options = [
         'key_id' => '8R342T9J4R', // The Key ID obtained from Apple developer account
         'team_id' => 'RQCKA5ZH38', // The Team ID obtained from Apple developer account
-        'app_bundle_id' => 'com.invo.voipDemo', // The bundle ID for app obtained from Apple developer account
+        'app_bundle_id' => 'RQCKA5ZH38.com.invo.voipDemo', // The bundle ID for app obtained from Apple developer account
         'private_key_path' => $p8file, // Path to private key
         'private_key_secret' => null // Private key secret
     ];
