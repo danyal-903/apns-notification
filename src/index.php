@@ -52,9 +52,9 @@ try {
     $payload->setSound('default');
 
     //add custom value to your notification, needs to be customized
-    $payload->setCustomValue('key', 'value');
+    $payload->setCustomValue('data', 'kuchbhi');
 
-    $deviceTokens = ['<device_token_1>', '<device_token_2>', '<device_token_3>'];
+    $deviceTokens = [$device_token];
 
     $notifications = [];
     foreach ($deviceTokens as $deviceToken) {
@@ -89,7 +89,7 @@ try {
     }
 
 
-    http_response_code($httpcode);
+    http_response_code(200);
     header("Content-Type: application/json");
     echo json_encode(["response" => $response]);
     die();
