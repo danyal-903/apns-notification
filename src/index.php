@@ -19,7 +19,7 @@ try {
 
     $device_token = $_POST["device_token"];
 
-    if (empty($device_token) || empty($apns_topic)) {
+    if (empty($device_token)) {
         http_response_code(400);
         header("Content-Type: application/json");
         echo json_encode(["error" => "Bad request"]);
