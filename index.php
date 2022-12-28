@@ -17,7 +17,7 @@ try {
     $title = $_POST["title"];
     $body = $_POST["body"];
 
-    if (empty($device_token) || empty($bundle_id) || empty($team_id) || empty($key_id) || empty($titel) || empty($body)) {
+    if (empty($device_token) || empty($bundle_id) || empty($team_id) || empty($key_id) || empty($title) || empty($body)) {
         http_response_code(400);
         header("Content-Type: application/json");
         echo json_encode(["error" => "Bad request - mandatory fields missing. device_token, bundle_id, team_id, key_id, title, body are required"]);
