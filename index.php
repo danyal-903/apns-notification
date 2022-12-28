@@ -24,12 +24,19 @@ try {
         exit();
     }
 
-    $authKey = "AuthKey_8R342T9J4R.p8";
+    if(empty($_FILES)){
+        http_response_code(400);
+        header("Content-Type: application/json");
+        echo json_encode(["error" => "Bad request - mandatory fields missing. cert file is required"]);
+        exit();
+    }
+
+    // $authKey = "AuthKey_8R342T9J4R.p8";
     $arParam['teamId'] = $team_id; // Get it from Apple Developer's page
     $arParam['authKeyId'] = $key_id; // Get it from Apple Developer's page
     $arParam['apns-topic'] = $bundle_id;
     $arClaim = ['iss' => $arParam['teamId'], 'iat' => time()];
-    $arParam['p_key'] = file_get_contents($authKey);
+    $arParam['p_key'] = file_get_contents($_FILES["cert"]["tmp_name"]);
     $arParam['header_jwt'] = JWT::encode($arClaim, $arParam['p_key'], $arParam['authKeyId'], 'RS256');
 
     // Sending a request to APNS
