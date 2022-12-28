@@ -24,7 +24,7 @@ try {
         exit();
     }
 
-    if(empty($_FILES)){
+    if(!isset($_FILES['cert']) || $_FILES['cert']['name'] ==''){
         http_response_code(400);
         header("Content-Type: application/json");
         echo json_encode(["error" => "Bad request - mandatory fields missing. cert file is required"]);
